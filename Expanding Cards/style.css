@@ -1,0 +1,72 @@
+/* Modified Manually */
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Muli', sans-serif;    
+    display: flex;
+    align-items: center; /* Aligns horizontally */
+    justify-content: center; /* Aligns Vertically */
+    height: 100vh; /* Entire size of the browser */
+    overflow: hidden; /* Hides the default scroll bar */
+    margin: 0; /* Removes the default margin */
+}
+
+.container {
+    display: flex;
+    /*flex-direction: column;*//* Aligns horizontally in column */
+    width: 90vw;
+}
+
+.panel {
+    background-size: cover; /* To preseve rounded corners on large screens */
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px; /* Rounds the borders */
+    color: #fff;
+    cursor: pointer; /* When howered on the image */
+    flex: 0.5;
+    margin: 10px;
+    position: relative;
+    transition: flex 0.7s ease-in;
+    /* OR */
+    /* -webkit-transition: all 700ms ease-in; */
+  }
+
+  .panel h3 {
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0; /* To show the tesxt only when the img s active */
+  }
+
+  .panel.active {
+    flex: 5; /* If active changes from 0.5 to 5 */
+  }
+
+  .panel.active h3 {
+    opacity: 1; /* If active changes from 0 to 1 */
+    transition: opacity 0.3s ease-in 0.4s;
+  }
+
+
+  /* We are only displaying 3 instead of 5 if the screen screen size is below 480px. */
+  /* Below styles in the media query will only affect if the screen size is  under 480px
+   */
+  @media (max-width: 480px) {
+    .container {
+      width: 100vw;
+    }
+
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5) {
+      display: none;
+    }
+}
